@@ -1,0 +1,5 @@
+com/gvisoc/hello/task/HelloTask.class
+com/gvisoc/hello/Start.class
+com/gvisoc/hello/StopMonitor.class
+com/gvisoc/hello/Stop.class
+com/gvisoc/hello/StopMonitorMBean.class

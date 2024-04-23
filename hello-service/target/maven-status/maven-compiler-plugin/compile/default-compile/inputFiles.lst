@@ -1,0 +1,5 @@
+/shared/rpm-systemd-hw/hello-service/src/main/java/com/gvisoc/hello/task/HelloTask.java
+/shared/rpm-systemd-hw/hello-service/src/main/java/com/gvisoc/hello/Start.java
+/shared/rpm-systemd-hw/hello-service/src/main/java/com/gvisoc/hello/StopMonitorMBean.java
+/shared/rpm-systemd-hw/hello-service/src/main/java/com/gvisoc/hello/Stop.java
+/shared/rpm-systemd-hw/hello-service/src/main/java/com/gvisoc/hello/StopMonitor.java

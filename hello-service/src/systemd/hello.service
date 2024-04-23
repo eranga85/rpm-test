@@ -1,0 +1,15 @@
+[Unit]
+Description=Hello Service. This service says hello to the user in /tmp/hello.log every few seconds.
+# Before and after directives go in this section. 
+# Example for waiting for the network to start the service:
+# After=network.target
+
+[Service]
+User=vagrant
+Group=vagrant
+ExecStart=/opt/hello/start.sh
+ExecStop=/opt/hello/stop.sh
+Type=forking
+
+[Install]
+WantedBy=default.target
