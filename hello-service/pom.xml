@@ -1,13 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.gvisoc.hello</groupId>
-    <artifactId>hello-service</artifactId>
-    <packaging>rpm</packaging>
-    <version>0.1.0</version>
-    <name>Hello Service</name>
+    
+    <groupId>com.example</groupId>
+    <artifactId>my-project</artifactId>
+    <version>${version.number}</version>
+<!--     <scm>
+        <connection>scm:git:https://github.com/eranga85/rpm-test.git</connection>
+        <url>https://github.com/eranga85/rpm-test.git</url>
+        <tag>HEAD</tag>
+    </scm> -->
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> -->
+        <version.number>${git.tags}-${git.branch}.x86_64</version.number>
     </properties>
     <dependencies>
         <!-- my logger of choice -->
@@ -35,6 +40,24 @@
     </dependencies>
     <build>
         <plugins>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>2.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <dateFormat>yyyyMMdd-HHmmss</dateFormat><!--  human-readable part of the version number -->
+                    <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+                    <generateGitPropertiesFile>false</generateGitPropertiesFile><!-- somehow necessary. otherwise the variables are not available in the pom -->
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -78,7 +101,6 @@
 
                     <!-- I wonder if RPM can be used for other target OSes, but hey. -->
                     <targetOS>linux</targetOS>
-                    
                     <!-- Java standalone process / Spring Uberjar -->
                     <requires>
                         <require>java &gt;= 11</require>
@@ -144,3 +166,4 @@
         </plugins>
     </build>
 </project>
+
